@@ -50,7 +50,7 @@ spr.init = function() {
 	console.log(this.data);
 
 	// generated the view
-	this.view = initThanksView();
+	this.view = initIntroView();
 	
 	// to be done: get TT and TPT from the model, this now is a temp solution
 	// TPT - total practice trials
