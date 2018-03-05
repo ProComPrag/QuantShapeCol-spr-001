@@ -416,12 +416,9 @@ var submitToMTurk = function() {
 
 // parses the url to get thr assignment_id and worker_id
 var getHITData = function() {
-	/*var url = window.location.href;*/
-	var url = 'https://tictactoe.amazon.com/gamesurvey.cgi?gameid=01523&assignmentId=123RVWYBAZW00EXAMPLE456RVWYBAZW00EXAMPLE&hitId=123RVWYBAZW00EXAMPLE&turkSubmitTo=https://www.mturk.com/&workerId=AZ3456EXAMPLE';
+	var url = window.location.href;
 	var qArray = url.split('?');
-	console.log(qArray);
 	qArray = qArray[1].split('&');
-	console.log(qArray);
 	var HITData = {};
 
 	for (var i=0; i<qArray.length; i++) {
