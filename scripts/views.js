@@ -252,6 +252,7 @@ var initThanksView = function() {
 	var HITData = getHITData();
 
 	$('#main').html(Mustache.render(view.template, {
+		mturk_server: config.MTurk_server,
 		thanksMessage: config.thanks.message,
 		assignmentId: HITData['assignmentId'],
 		author: config.author,
@@ -277,6 +278,7 @@ var initThanksView = function() {
 	// if it is set to false
 	// the results are shown on the thanks slide
 	if (config.liveExperiment) {
+		/*submitResults(config.is_MTurk, config.contact_email, data);*/
 		submitResults(config.is_MTurk, config.contact_email, data);
 	} else {
 		jQuery('<p/>', {
@@ -405,7 +407,7 @@ var submitResults = function(isMTurk, contactEmail, data) {
 // and the correct url is given in config.MTurk_server
 var submitToMTurk = function() {
 	var form = $('#mturk-submission-form');
-	form.action = config.MTurk_server;
+	console.log(form.attr('action'));
 
 	console.log('submits to mturk');
 	form.submit();

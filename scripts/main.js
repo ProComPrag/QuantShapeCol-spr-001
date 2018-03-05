@@ -40,10 +40,10 @@ spr.findNextView = function() {
 
 spr.init = function() {
 	// CPT - current practice trial
-	this.CPT = 0;
+	this.CPT = 1;
 
 	// CT - current trial
-	this.CT = 0;
+	this.CT = 22;
 
 	// generates the experiment and assigns it to this.data
 	this.data = initExp();
