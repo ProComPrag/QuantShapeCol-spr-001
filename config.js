@@ -4,8 +4,8 @@
 var config = {
 	// mandatory fields - author, experiment_id, description
 	"author": "Stela",
-	"experiment_id": "spr-pilot-test",
-	"description": "spr pilot test",
+	"experiment_id": "spr-pilot-test-02",
+	"description": "spr pilot test-02",
 	"liveExperiment": true,
 	"contact_email": "stella.plamenova@gmail.com",
 	// submission settings
