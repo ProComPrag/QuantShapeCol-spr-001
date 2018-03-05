@@ -254,7 +254,7 @@ var initThanksView = function() {
 	$('#main').html(Mustache.render(view.template, {
 		mturk_server: config.MTurk_server,
 		thanksMessage: config.thanks.message,
-		assignmentId: HITData['assignmentId'],
+		assignmentId: HITData['assignment_id'],
 		author: config.author,
 		experiment_id: config.experiment_id,
 		trials: spr.data.trials,
@@ -279,7 +279,7 @@ var initThanksView = function() {
 	// the results are shown on the thanks slide
 	if (config.liveExperiment) {
 		/*submitResults(config.is_MTurk, config.contact_email, data);*/
-		submitResults(config.is_MTurk, config.contact_email, data);
+		submitToMTurk();
 	} else {
 		jQuery('<p/>', {
 			text: JSON.stringify(data)
@@ -416,13 +416,19 @@ var submitToMTurk = function() {
 
 // parses the url to get thr assignment_id and worker_id
 var getHITData = function() {
-	var url = window.location.href;
-	var qArray = url.split('&');
+	/*var url = window.location.href;*/
+	var url = 'https://tictactoe.amazon.com/gamesurvey.cgi?gameid=01523&assignmentId=123RVWYBAZW00EXAMPLE456RVWYBAZW00EXAMPLE&hitId=123RVWYBAZW00EXAMPLE&turkSubmitTo=https://www.mturk.com/&workerId=AZ3456EXAMPLE';
+	var qArray = url.split('?');
+	console.log(qArray);
+	qArray = qArray[1].split('&');
+	console.log(qArray);
 	var HITData = {};
 
 	for (var i=0; i<qArray.length; i++) {
 		HITData[qArray[i].split('=')[0]] = qArray[i].split('=')[1];
 	}
+
+	console.log(HITData);
 
 	return HITData;
 };
