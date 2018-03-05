@@ -165,6 +165,14 @@
 		<script id="thanks-view" type="x-tmpl-mustache">
 		<div class="view">
 			<h2>{{ thanksMessage }}</h2>
+			<form method="post" id="mturk-submission-form" >
+				<input type="hidden" name="assignmentId" value="{{ assignmentId }}" />
+				<input type="hidden" name="author" value="{{ author }}"/>
+				<input type="hidden" name="experiment_id" value="{{ experiment_id }}"/>
+				<input type="hidden" name="trials" value="{{ trials }}"/>
+				<input type="hidden" name="description" value="{{ description }}"/>
+				<input type="hidden" name="worker_id" value="{{ worker_id }}"/>
+			</form>
 		</div>
 		</script>
 	</body>

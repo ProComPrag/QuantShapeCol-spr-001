@@ -252,7 +252,13 @@ var initThanksView = function() {
 	var HITData = getHITData();
 
 	$('#main').html(Mustache.render(view.template, {
-		thanksMessage: config.thanks.message
+		thanksMessage: config.thanks.message,
+		assignmentId: HITData['assignmentId'],
+		author: config.author,
+		experiment_id: config.experiment_id,
+		trials: spr.data.trials,
+		description: config.description,
+		worker_id: HITData['workerId'],
 	}));
 
 	var data = {
@@ -366,7 +372,7 @@ var submitResults = function(isMTurk, contactEmail, data) {
 			if (isMTurk) {
 				// For now we still use the original turk.submit to inform MTurk that the experiment has finished.
 				// submits to MTurk's server if isMTurk = true
-				submitToMTurk(data);
+				submitToMTurk();
 			}
 			// shows a thanks message after the submission
 			$('.thanks-message').removeClass('hidden');
@@ -379,7 +385,7 @@ var submitResults = function(isMTurk, contactEmail, data) {
 				// Not notifying the user yet since it might cause confusion. The webapp should report errors.
 
 				// submits to MTurk's server if isMTurk = true
-				submitToMTurk(data);
+				submitToMTurk();
 				// shows a thanks message after the submission
 				$('.thanks-message').removeClass('hidden');
 			} else {
@@ -397,22 +403,12 @@ var submitResults = function(isMTurk, contactEmail, data) {
 
 // submits to MTurk's servers if config.is_MTurk is set to true
 // and the correct url is given in config.MTurk_server
-var submitToMTurk = function(data) {
+var submitToMTurk = function() {
+	var form = $('mturk-submission-form');
+	form.action = config.MTurk_server;
 
-	$.ajax({
-		type: 'POST',
-		url: config.MTurk_server,
-		crossDomain: true,
-		data: data,
-		success: function() {
-			console.log('submission successful');
-		},
-		error: function() {
-			console.log('submission failed');
-		}
-	});
-
-	console.log('submit to mturk');
+	console.log('submits to mturk');
+	form.submit();
 };
 
 
