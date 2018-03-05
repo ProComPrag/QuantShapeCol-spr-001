@@ -254,7 +254,7 @@ var initThanksView = function() {
 	$('#main').html(Mustache.render(view.template, {
 		mturk_server: config.MTurk_server,
 		thanksMessage: config.thanks.message,
-		assignmentId: HITData['assignment_id'],
+		assignmentId: HITData['assignmentId'],
 		author: config.author,
 		experiment_id: config.experiment_id,
 		trials: spr.data.trials,
