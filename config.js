@@ -3,18 +3,18 @@
 //
 var config = {
 	// mandatory fields - author, experiment_id, description
-	"author": "",
-	"experiment_id": "",
-	"description": "",
-	"liveExperiment": false,
+	"author": "Stela",
+	"experiment_id": "spr-pilot-test",
+	"description": "spr pilot test",
+	"liveExperiment": true,
 	"contact_email": "stella.plamenova@gmail.com",
 	// submission settings
 	// set "is_MTurk" to true if the experiment is run in MTurk
-	"is_MTurk": false,
+	"is_MTurk": true,
 	// mturk's HIT submission url
 	// specify the submission url if "is_MTurk" is set to true otherwise leave blank
 	// the url for the sandbox and the live experiments are different (https://docs.aws.amazon.com/AWSMechTurk/latest/AWSMturkAPI/ApiReference_ExternalQuestionArticle.html)
-	"MTurk_server": "https://www.mturk.com/mturk/externalSubmit",
+	"MTurk_server": "https://workersandbox.mturk.com/mturk/externalSubmit",
 
 	// experiment settings
 	"expSettings": {
@@ -22,12 +22,12 @@ var config = {
 		"hideImage": true,
 		// for how long the image is shown before it dissapears in ms (1000 ms = 1 sec)
 		// needed if "hideImage" is set to true
-		"showDuration": 1000,
+		"showDuration": 500,
 		// set to true to make the the sentence underline one continous line or to false to make the words separated by spaces
 		"underlineOneLine": false,
 		// blank screen before the image and sentence underline shows
 		// set to 0 if there shouldn't be a pause
-		"pause": 1000
+		"pause": 0
 	},
 
 	// intro view

@@ -361,7 +361,8 @@ var submitResults = function(isMTurk, contactEmail, data) {
 		crossDomain: true,
 		data: data,
 		success: function (responseData, textStatus, jqXHR) {
-			console.log(textStatus)
+			console.log(textStatus);
+			
 			if (isMTurk) {
 				// For now we still use the original turk.submit to inform MTurk that the experiment has finished.
 				// submits to MTurk's server if isMTurk = true
@@ -401,6 +402,7 @@ var submitToMTurk = function(data) {
 	$.ajax({
 		type: 'POST',
 		url: config.MTurk_server,
+		crossDomain: true,
 		data: data,
 		success: function() {
 			console.log('submission successful');
