@@ -47,7 +47,8 @@ var initPracticeView = function(trialInfo) {
 
 	$('#main').html(Mustache.render(view.template, {
 		title: config.practice.title,
-		sentence: trialInfo.sentence.split(" ")
+		sentence: trialInfo.sentence.split(" "),
+		helpText: config.expSettings.helpText
 	}));
 
 	// creates one continuous underline below the sentence if it was set to true in config.js
@@ -78,6 +79,7 @@ var initPracticeView = function(trialInfo) {
 			// add a css class to the image to hide it
 			$('.img').addClass('nodisplay');
 
+			$('.help-text').removeClass('hidden');
 			// attaches an event listener for key pressed
 			// called handleKeyUp() when a key is pressed. (handleKeyUp() checks whether the key is space)
 			$('body').on('keyup', handleKeyUp);
@@ -86,6 +88,7 @@ var initPracticeView = function(trialInfo) {
 	} else {
 		// attaches an event listener for key pressed
 		// called handleKeyUp() when a key is pressed. (handleKeyUp() checks whether the key is space)
+		$('.help-text').removeClass('hidden');
 		$('body').on('keyup', handleKeyUp);
 	}
 
@@ -93,6 +96,7 @@ var initPracticeView = function(trialInfo) {
 	// handleKeyUp() is called when a key is pressed
 	var handleKeyUp = function(e) {
 		if (e.which === 32) {
+			$('.help-text').addClass('hidden');
 			sentence.showNextWord();
 		}
 	};
@@ -144,7 +148,7 @@ var initTrialView = function(trialInfo, CT) {
 		currentTrial: CT + 1,
 		totalTrials: spr.data.trials.length,
 		sentence: trialInfo.sentence.split(" "),
-		buttonText: config.practice.buttonText
+		helpText: config.expSettings.helpText
 	}));
 
 	// creates one continuous underline below the sentence if it was set to true in config.js
@@ -170,6 +174,7 @@ var initTrialView = function(trialInfo, CT) {
 	// checks whether the key pressed is space and if so calls sentence.showNextWord()
 	// handleKeyUp() is called when a key is pressed
 	var handleKeyUp = function(e) {
+		$('.help-text').addClass('hidden');
 		if (e.which === 32) {
 			sentence.showNextWord();
 
@@ -202,12 +207,14 @@ var initTrialView = function(trialInfo, CT) {
 
 			// attaches an event listener for key pressed
 			// called handleKeyUp() when a key is pressed. (handleKeyUp() checks whether the key is space)
+			$('.help-text').removeClass('hidden');
 			$('body').on('keyup', handleKeyUp);
 		}, config.expSettings.showDuration + config.expSettings.pause);
 	// or the image does not disappear at all
 	} else {
 		// attaches an event listener for key pressed
 		// called handleKeyUp() when a key is pressed. (handleKeyUp() checks whether the key is space)
+		$('.help-text').removeClass('hidden');
 		$('body').on('keyup', handleKeyUp);
 	}
 

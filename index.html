@@ -63,11 +63,12 @@
 		<div class="view">
 			<h2>{{ title }}</h2>
 			<div class="pause-container">
-				<div class="point"></div>
+				<img class="point" src="images/cross.png" height="30" width="30" />
 			</div>
 			<div class="stimulus-container">
 				<canvas id="canvas" class="stimulus img nodisplay show" height="200" width="500"></canvas>
 			</div>
+			<p class="help-text hidden">{{ helpText }}</p>
 			<p class="sentence nodisplay show">
 				{{# sentence }}
 				<span class="word">{{ . }}</span>
@@ -99,11 +100,12 @@
 			</div>
 			<div class="clearfix"></div>
 			<div class="pause-container">
-				<div class="point"></div>
+				<img class="point" src="images/cross.png" height="30" width="30" />
 			</div>
 			<div class="stimulus-container">
 				<canvas id="canvas" class="stimulus img nodisplay show" height="200" width="500"></canvas>
 			</div>
+			<p class="help-text hidden">{{ helpText }}</p>
 			<p class="sentence nodisplay show">
 				{{# sentence }}
 				<span class="word">{{ . }}</span>

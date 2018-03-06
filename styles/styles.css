@@ -2,6 +2,8 @@ html,
 body {
 	margin: 0;
 	padding: 0;
+	height: 100%;
+	width: 100%;
 }
 
 /*
@@ -18,6 +20,10 @@ h1, h2 {
 a, p, li, span, button {
 	color: #333;
 	font-family: "Noto Sans", sans-serif;
+}
+
+#main {
+	min-height: 100%;
 }
 
 .view {
@@ -59,6 +65,10 @@ a, p, li, span, button {
 	practice trial and trial related styles
 */
 
+.trial {
+	height: 100%;
+}
+
 .progress-bar-container {
 	float: right;
 	margin: -20px 0 40px 0;
@@ -70,14 +80,10 @@ a, p, li, span, button {
 }
 
 .pause-container .point {
-	background: #333;
-	border-radius: 50%;
-	height: 20px;
-	width: 20px;
 	position: fixed;
 	top: 50%;
-	top: calc(50% - 10px);
-	left: calc(50% - 10px);
+	top: calc(50% - 15px);
+	left: calc(50% - 15px);
 }
 
 .stimulus-container {
@@ -88,12 +94,19 @@ a, p, li, span, button {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	height: 300px;
+	height: 350px;
 	margin: 0 auto;
 	width: 500px;
 }
 
 .img {
+}
+
+.help-text {
+	color: #555;
+	font-style: italic;
+	margin: 0;
+	text-align: center;
 }
 
 .sentence-container {
@@ -198,4 +211,8 @@ input[name=question] {
 
 .visible {
 	visibility: visible;
+}
+
+.hidden {
+	visibility: hidden;
 }
