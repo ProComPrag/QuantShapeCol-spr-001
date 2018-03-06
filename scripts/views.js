@@ -105,6 +105,7 @@ var initPracticeView = function(trialInfo) {
 	return view;
 };
 
+
 // creates Begin experiment view
 var initBeginExpView = function() {
 	var view = {};
@@ -118,6 +119,7 @@ var initBeginExpView = function() {
 
 	return view;
 };
+
 
 // creates Trial View
 var initTrialView = function(trialInfo, CT) {
@@ -215,6 +217,7 @@ var initTrialView = function(trialInfo, CT) {
 	$('input[name=question]').on('change', function() {
 		$('body').off('keyup', handleKeyUp);
 		spr.data.trials[CT].time_spent = Date.now() - startingTime - 1000;
+		spr.data.trials[CT].trial_number = CT+1;
 		spr.data.trials[CT].response = $('input[name=question]:checked').val();
 		spr.data.trials[CT].reading_times = getDeltas();
 		console.log(spr.data.trials[CT]);
@@ -257,7 +260,7 @@ var initThanksView = function() {
 		assignmentId: HITData['assignmentId'],
 		author: config.author,
 		experiment_id: config.experiment_id,
-		trials: spr.data.trials,
+		trials: JSON.stringify(spr.data.trials),
 		description: config.description,
 		worker_id: HITData['workerId'],
 	}));
@@ -278,8 +281,7 @@ var initThanksView = function() {
 	// if it is set to false
 	// the results are shown on the thanks slide
 	if (config.liveExperiment) {
-		/*submitResults(config.is_MTurk, config.contact_email, data);*/
-		submitToMTurk();
+		submitResults(config.is_MTurk, config.contact_email, data);
 	} else {
 		jQuery('<p/>', {
 			text: JSON.stringify(data)
