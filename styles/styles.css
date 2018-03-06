@@ -74,14 +74,20 @@ a, p, li, span, button {
 	margin: -20px 0 40px 0;
 }
 
+.progress-bar {
+	color: #555;
+	font-style: italic;
+}
+
 .pause-container {
 	height: 100%;
 	width: 100%;
+	margin: 0 auto;
+	position: relative;
 }
 
 .pause-container .point {
-	position: fixed;
-	top: 50%;
+	position: absolute;
 	top: calc(50% - 15px);
 	left: calc(50% - 15px);
 }
@@ -94,8 +100,8 @@ a, p, li, span, button {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	height: 350px;
-	margin: 0 auto;
+	height: 160px;
+	margin: 30px auto;
 	width: 500px;
 }
 

@@ -62,11 +62,11 @@
 		<script id="practice-view" type="x-tmpl-mustache">
 		<div class="view">
 			<h2>{{ title }}</h2>
-			<div class="pause-container">
-				<img class="point" src="images/cross.png" height="30" width="30" />
-			</div>
 			<div class="stimulus-container">
-				<canvas id="canvas" class="stimulus img nodisplay show" height="200" width="500"></canvas>
+				<div class="pause-container">
+					<img class="point" src="images/cross.png" height="30" width="30" />
+				</div>
+				<canvas id="canvas" class="stimulus img nodisplay show" height="160" width="500"></canvas>
 			</div>
 			<p class="help-text hidden">{{ helpText }}</p>
 			<p class="sentence nodisplay show">
@@ -96,14 +96,14 @@
 		<script id="trial-view" type="x-tmpl-mustache">
 		<div class="view">
 			<div class="progress-bar-container">
-				<p>progress: <span id="current-trial">{{ currentTrial }}</span>/<span id="total-trial">{{ totalTrials }}</span></p>
+				<p class="progress-bar">progress: <span id="current-trial">{{ currentTrial }}</span>/<span id="total-trial">{{ totalTrials }}</span></p>
 			</div>
 			<div class="clearfix"></div>
-			<div class="pause-container">
-				<img class="point" src="images/cross.png" height="30" width="30" />
-			</div>
 			<div class="stimulus-container">
-				<canvas id="canvas" class="stimulus img nodisplay show" height="200" width="500"></canvas>
+				<div class="pause-container">
+					<img class="point" src="images/cross.png" height="30" width="30" />
+				</div>
+				<canvas id="canvas" class="stimulus img nodisplay show" height="160" width="500"></canvas>
 			</div>
 			<p class="help-text hidden">{{ helpText }}</p>
 			<p class="sentence nodisplay show">
