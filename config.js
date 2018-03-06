@@ -3,18 +3,18 @@
 //
 var config = {
 	// mandatory fields - author, experiment_id, description
-	"author": "Stela",
-	"experiment_id": "spr-pilot-test-02",
-	"description": "spr pilot test-02",
+	"author": "Vinicius M Silva",
+	"experiment_id": "spr-pilot",
+	"description": "Pilot version of a self-paced reading study focused on scalar implicature processing",
 	"liveExperiment": true,
-	"contact_email": "stella.plamenova@gmail.com",
+	"contact_email": "vini.macuch@gmail.com",
 	// submission settings
 	// set "is_MTurk" to true if the experiment is run in MTurk
 	"is_MTurk": true,
 	// mturk's HIT submission url
 	// specify the submission url if "is_MTurk" is set to true otherwise leave blank
 	// the url for the sandbox and the live experiments are different (https://docs.aws.amazon.com/AWSMechTurk/latest/AWSMturkAPI/ApiReference_ExternalQuestionArticle.html)
-	"MTurk_server": "https://workersandbox.mturk.com/mturk/externalSubmit",
+	"MTurk_server": "https://www.mturk.com/mturk/externalSubmit",
 
 	// experiment settings
 	"expSettings": {
@@ -22,22 +22,22 @@ var config = {
 		"hideImage": true,
 		// for how long the image is shown before it dissapears in ms (1000 ms = 1 sec)
 		// needed if "hideImage" is set to true
-		"showDuration": 500,
+		"showDuration": 1500,
 		// set to true to make the the sentence underline one continous line or to false to make the words separated by spaces
 		"underlineOneLine": false,
 		// blank screen before the image and sentence underline shows
 		// set to 0 if there shouldn't be a pause
-		"pause": 0
+		"pause": 700
 	},
 
 	// intro view
 	"intro": {
 		// introduction title
-		"title": "Welcome to XPrag experiments!",
+		"title": "Welcome!",
 		// introduction text
-		"text": "Lorem ipsum dolor sit amet consectetur adipiscing elit tellus auctor, risus metus mauris nibh leo senectus varius taciti bibendum, laoreet tempor orci ligula iaculis odio malesuada nostra. Erat gravida consequat nunc pharetra libero tempus lobortis placerat, laoreet vitae eget vivamus eros luctus sed nullam auctor, vel sem hac quam facilisis aptent blandit. Bibendum molestie morbi ullamcorper vitae accumsan dapibus ultricies aliquet mi luctus, ante suscipit purus consequat nascetur a senectus cras donec.",
+		"text": "Thank you for participating in our study. In this study, you will answer questions about 24 sentences that describe images. To participate in the experiment, please first accept the HIT. By answering the following questions, you are participating in a study being performed by scientists from the Eberhard Karls University of Tübingen. You must be at least 18 years old to participate. Your participation in this research is voluntary. You may decline to answer any or all of the following questions. You may decline further participation, at any time, without adverse consequences. Your anonymity is assured; the researchers who have requested your participation will not receive any personal information about you.",
 		// instroduction's slide proceeding button
-		"buttonText": "Begin Experiment"
+		"buttonText": "Begin experiment"
 	},
 
 	// instructions view
@@ -45,19 +45,19 @@ var config = {
 		// instruction's title
 		"title": "Instructions",
 		// instruction's text
-		"text": "instructions on how to do the exp",
+		"text": "Each trial, you will see a picture on screen depicting shapes colored in either black or white. You will then have to press the space bar to reveal bits of a sentence which you have to read. After reading the sentence, you will be asked if you agree or disagree with what you just read. Select one of the options and you will be directed to the next trial.",
 		// instuction's slide proceeding button text
 		"buttonText": "Go to practice trial"
 	},
 
 	// practice trial view
 	"practice": {
-		"title": "Practice Trial"
+		"title": "Practice trial"
 	},
 
 	// begin experiment view
 	"beginExp": {
-		"text": "Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus."
+		"text": "Now that you have acquainted yourself with the procedure of the task, the actual experiment will begin."
 	},
 
 	// subject info view
