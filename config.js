@@ -1,17 +1,17 @@
 var config = {
 	// mandatory fields - author, experiment_id, description
-	"author": "Stela",
-	"experiment_id": "spr-pilot-test-04",
-	"description": "spr pilot test-04",
+	"author": "Vinicius M Silva",
+	"experiment_id": "spr-pilot",
+	"description": "Pilot version of a self-paced reading study focused on scalar implicature processing",
 	"liveExperiment": true,
-	"contact_email": "stella.plamenova@gmail.com",
+	"contact_email": "vini.macuch@gmail.com",
 	// submission settings
 	// set "is_MTurk" to true if the experiment is run in MTurk
 	"is_MTurk": true,
 	// mturk's HIT submission url
 	// specify the submission url if "is_MTurk" is set to true otherwise leave blank
 	// the url for the sandbox and the live experiments are different (https://docs.aws.amazon.com/AWSMechTurk/latest/AWSMturkAPI/ApiReference_ExternalQuestionArticle.html)
-	"MTurk_server": "https://workersandbox.mturk.com/mturk/externalSubmit",
+	"MTurk_server": "https://www.mturk.com/mturk/externalSubmit",
 
 	// experiment settings
 	"expSettings": {
@@ -24,9 +24,7 @@ var config = {
 		"underlineOneLine": false,
 		// blank screen before the image and sentence underline shows
 		// set to 0 if there shouldn't be a pause
-		"pause": 700,
-		// help text reminding the participant to press space to see the sentence
-		"helpText": "Press the SPACE bar to reveal the sentence."
+		"pause": 700
 	},
 
 	// intro view

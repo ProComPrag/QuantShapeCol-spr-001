@@ -68,7 +68,9 @@
 				</div>
 				<canvas id="canvas" class="stimulus img nodisplay show" height="160" width="500"></canvas>
 			</div>
+			{{# helpText }}
 			<p class="help-text hidden">{{ helpText }}</p>
+			{{/ helpText }}
 			<p class="sentence nodisplay show">
 				{{# sentence }}
 				<span class="word">{{ . }}</span>
@@ -105,7 +107,9 @@
 				</div>
 				<canvas id="canvas" class="stimulus img nodisplay show" height="160" width="500"></canvas>
 			</div>
+			{{# helpText }}
 			<p class="help-text hidden">{{ helpText }}</p>
+			{{/ helpText }}
 			<p class="sentence nodisplay show">
 				{{# sentence }}
 				<span class="word">{{ . }}</span>
