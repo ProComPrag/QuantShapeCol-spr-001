@@ -19,9 +19,11 @@
 
 		<!-- local js files -->
 		<script src="scripts/exp.js"></script>
-		<script src="scripts/canvas.js"></script>
 		<script src="scripts/main.js"></script>
 		<script src="scripts/views.js"></script>
+
+		<!-- new js files -->
+		<script src="scripts/canvas.js"></script>
 	</head>
 
 	<body>
@@ -39,29 +41,46 @@
 		<!-- Introduction view -->
 		<script id="intro-view" type="x-tmpl-mustache">
 		<div class='view'>
+			{{# title }}
 			<h2 class="title">{{ title }}</h2>
+			{{/ title }}
+			{{# text }}
 			<section class="text-container">
 				<p class="text">{{ text }}</p>
 			</section>
+			{{/ text }}
+			{{# button }}
 			<button class="btn next-view">{{ button }}</button>
+			{{/ button }}
+			{{^ button }}
+			<button class="btn next-view">Begin Experiment</button>
+			{{/ button }}
 		</div>
 		</script>
 
 		<!-- Instructions view -->
 		<script id="instructions-view" type="x-tmpl-mustache">
 		<div class="view">
+			{{# title }}
 			<h2>{{ title }}</h2>
+			{{/ title }}
+			{{# text }}
 			<section class="text-container">
 				<p class="text">{{ text }}</p>
 			</section>
+			{{/ text }}
+			{{# button }}
 			<button class="btn next-view">{{ button }}</button>
+			{{/ button }}
 		</view>
 		</script>
 
 		<!-- Practice trial view -->
 		<script id="practice-view" type="x-tmpl-mustache">
 		<div class="view">
+			{{# title }}
 			<h2>{{ title }}</h2>
+			{{/ title }}
 			<div class="stimulus-container">
 				<div class="pause-container">
 					<img class="point" src="images/cross.png" height="30" width="30" />
@@ -89,7 +108,11 @@
 		<!-- Begin Experiment view -->
 		<script id="begin-exp-view" type="x-tmpl-mustache">
 		<div class="view">
-			<p>{{ text }}</p>
+			{{# text }}
+			<section class="text-container">
+				<p class="text">{{ text }}</p>
+			</section>
+			{{/ text }}
 			<button class="btn next-view">Begin Experiment</button>
 		</div>
 		</script>
@@ -128,8 +151,14 @@
 		<!-- subject info view -->
 		<script id="subj-info-view" type="x-tmpl-mustache">
 		<div class="view subj-info-templ">
+			{{# title }}
 			<h2>{{ title }}</h2>
-			<p class="text">{{ text }}</p>
+			{{/ title }}
+			{{# text }}
+			<section class="text-container">
+				<p class="text">{{ text }}</p>
+			</section>
+			{{/ text }}
 			<form>
 				<p>
 					<label for="age">Age:</label>
@@ -162,7 +191,12 @@
 					<textarea name="comments" id="comments"
 					rows="6" cols="40"></textarea>
 				</p>
+				{{# buttonText }}
 				<button id="sends-data" class="btn next-view sends-data">{{ buttonText }}</button>
+				{{/ buttonText }}
+				{{^ buttonText }}
+				<button id="sends-data" class="btn next-view sends-data">Next</button>
+				{{/ buttonText }}
 			</form>
 		</div>
 		</script>

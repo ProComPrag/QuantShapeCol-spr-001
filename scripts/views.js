@@ -223,7 +223,7 @@ var initTrialView = function(trialInfo, CT) {
 	// as well as a readingTimes property with value - a list containing the reading times of each word
 	$('input[name=question]').on('change', function() {
 		$('body').off('keyup', handleKeyUp);
-		spr.data.trials[CT].time_spent = Date.now() - startingTime - 1000;
+		spr.data.trials[CT].time_spent = Date.now() - startingTime - config.expSettings.pause;
 		spr.data.trials[CT].trial_number = CT+1;
 		spr.data.trials[CT].response = $('input[name=question]:checked').val();
 		spr.data.trials[CT].reading_times = getDeltas();
