@@ -269,7 +269,7 @@ var initThanksView = function() {
 		experiment_id: config.experiment_id,
 		trials: JSON.stringify(spr.data.trials),
 		description: config.description,
-		worker_id: HITData['workerId'],
+		worker_id: HITData['workerId']
 	}));
 
 	var data = {
