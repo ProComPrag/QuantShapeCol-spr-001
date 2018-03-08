@@ -1,10 +1,10 @@
 var config = {
 	// mandatory fields - author, experiment_id, description
-	"author": "Stela",
-	"experiment_id": "spr-pilot-test-06",
+	"author": "Vinicius M Silva",
+	"experiment_id": "spr-pilot",
 	"description": "Pilot version of a self-paced reading study focused on scalar implicature processing",
 	"liveExperiment": true,
-	"contact_email": "stella.plamenova@gmail.com",
+	"contact_email": "vini.macuch@gmail.com",
 	// submission settings
 	// set "is_MTurk" to true if the experiment is run in MTurk
 	"is_MTurk": true,
