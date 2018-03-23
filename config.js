@@ -20,7 +20,7 @@ var config = {
 		"hideImage": true,
 		// for how long the image is shown before it dissapears in ms (1000 ms = 1 sec)
 		// needed if "hideImage" is set to true
-		"showDuration": 1500,
+		"showDuration": 2500,
 		// set to true to make the the sentence underline one continous line or to false to make the words separated by spaces
 		"underlineOneLine": false,
 		// blank screen before the image and sentence underline shows
