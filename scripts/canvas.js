@@ -54,11 +54,11 @@ var createCanvas = function() {
 
 	context.beginPath();
 
-	if (shape === 'circular') {
+	if (shape === 'circle') {
 	    context.arc(coords[index]["xPos"], coords[index]["yPos"], 20, 0, 2*Math.PI);
-	} else if (shape === 'squared') {
+	} else if (shape === 'square') {
 	    context.rect(coords[index]["xPos"]-20, coords[index]["yPos"]-20, 40, 40);
-	} else if (shape === 'triangular') {
+	} else if (shape === 'triangle') {
 	    context.moveTo(coords[index]["xPos"], coords[index]["yPos"]+15);
     	    context.lineTo(coords[index]["xPos"]+40, coords[index]["yPos"]+15);
     	    context.lineTo(coords[index]["xPos"]+20, coords[index]["yPos"]-15);
