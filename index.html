@@ -79,9 +79,12 @@
 		<!-- Practice trial view -->
 		<script id="practice-view" type="x-tmpl-mustache">
 		<div class="view">
-			{{# title }}
-			<h2>{{ title }}</h2>
-			{{/ title }}
+		  {{# title }}
+		  <h2>{{ title }}</h2>
+		  {{/ title }}
+		  {{# QUD }}
+		  <h3>{{ QUD }}</h3>
+		  {{/ QUD }}
 			<div class="stimulus-container">
 				<div class="pause-container">
 					<img class="point" src="images/cross.png" height="30" width="30" />
@@ -125,6 +128,9 @@
 				<p class="progress-bar">progress: <span id="current-trial">{{ currentTrial }}</span>/<span id="total-trial">{{ totalTrials }}</span></p>
 			</div>
 			<div class="clearfix"></div>
+			{{# QUD }}
+			<h3>{{ QUD }}</h3>
+			{{/ QUD }}
 			<div class="stimulus-container">
 				<div class="pause-container">
 					<img class="point" src="images/cross.png" height="30" width="30" />

@@ -40,13 +40,10 @@ var initPracticeView = function(trialInfo) {
     var sentence = initSentence();
     // initialises a canvas (code is canvas.js)
     var canvas = createCanvas();
-    var secondaryShape = pickSecondaryShape(trialInfo['shape']);
-    var numberOfBlacks = trialInfo['numberBlack'].split(', ');
-    numberOfBlacks[0] = Number(numberOfBlacks[0]);
-    numberOfBlacks[1] = Number(numberOfBlacks[1]);
 
     $('#main').html(Mustache.render(view.template, {
 	title: config.practice.title,
+	QUD: trialInfo.QUD,
 	sentence: trialInfo.sentence.split(" "),
 	helpText: config.expSettings.helpText
     }));
@@ -60,7 +57,7 @@ var initPracticeView = function(trialInfo) {
 	}
     }
 
-    canvas.draw(numberOfBlacks[0], trialInfo['shape'], numberOfBlacks[1], secondaryShape, trialInfo['side']);
+    canvas.draw(trialInfo);
 
     setTimeout(function() {
 	var show = $('.show');
@@ -130,22 +127,19 @@ var initTrialView = function(trialInfo, CT) {
     var view = {};
     view.name = 'trial';
     view.template = $('#trial-view').html();
+
     // initialises a canvas (code is canvas.js)
     var canvas = createCanvas();
     var readingDates = [];
     var readingTimes = [];
     var rtCount = trialInfo.sentence.split(" ").length;
     var sentence = initSentence();
-    var secondaryShape = pickSecondaryShape(trialInfo['shape']);
-    // converts the numbers into number data types
-    var numberOfBlacks = trialInfo['numberBlack'].split(', ');
-    numberOfBlacks[0] = Number(numberOfBlacks[0]);
-    numberOfBlacks[1] = Number(numberOfBlacks[1]);
     var startingTime = Date.now();
 
     // renders the templ
     $('#main').html(Mustache.render(view.template, {
 	currentTrial: CT + 1,
+	QUD: trialInfo.QUD,
 	totalTrials: spr.data.trials.length,
 	sentence: trialInfo.sentence.split(" "),
 	helpText: config.expSettings.helpText
@@ -160,7 +154,7 @@ var initTrialView = function(trialInfo, CT) {
 	}
     }
 
-    canvas.draw(numberOfBlacks[0], trialInfo['shape'], numberOfBlacks[1], secondaryShape, trialInfo['side'], trialInfo['color'], trialInfo['secondaryColor']);
+    canvas.draw(trialInfo);
 
     setTimeout(function() {
 	var show = $('.show');

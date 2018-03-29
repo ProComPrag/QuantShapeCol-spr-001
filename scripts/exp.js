@@ -17,13 +17,18 @@ var initExp = function() {
     logicalConditions.fill("some,biased", numberSomeBiased + numberSomeBiased, numberSomeBiased + numberSomeBiased + numberAllBiased)
     logicalConditions.fill("all,unbiased", numberSomeBiased + numberSomeBiased + numberAllBiased, totalLogicalConditions)
     
-    var someBiased = ['0, 4', '4, 8', '8, 4', '4, 0'];
+    var someBiased = ['4, 0']; // there are other possibilities
     var someUnbiased = ['4, 4'];
-    var allBiased = ['8, 4', '0, 4', '4, 8', '4, 0'];
-    var allUnbiased = ['8, 0', '8, 0'];
+    var allBiased = ['8, 4'];
+    var allUnbiased = ['8, 0'];
 
+    var someBiased = [{focalColor_focalObject: 4, focalColor_otherObject: 0}] // there are other possibilities
+    var someUnbiased = [{focalColor_focalObject: 4, focalColor_otherObject: 4}]
+    var allBiased = [{focalColor_focalObject: 8, focalColor_otherObject: 4}]
+    var allUnbiased = [{focalColor_focalObject: 8, focalColor_otherObject: 0}]
+    
     var shapes = ['circular', 'triangular', 'squared'];
-    var colors = ['black', 'white', 'red', 'blue', 'green'];
+    var colors = ['red', 'blue'];
 
     var createTrialByLogicalType = function(quant, bias) {
 
@@ -38,26 +43,27 @@ var initExp = function() {
 		     bias: bias}; // trial object to populate with relevant info subsequently
 
 	if (quant === 'some' && bias === 'biased') { // some biased
-	    trial.numberBlack = _.shuffle(someBiased)[0]
+	    trial.numberFocalColor = _.shuffle(someBiased)[0]
 	} else if (quant === 'some' && bias === 'unbiased') { // some unbiased
-	    trial.numberBlack = _.shuffle(someUnbiased)[0]
+	    trial.numberFocalColor = _.shuffle(someUnbiased)[0]
 	} else if (quant === 'all' && bias === 'biased') { // all biased
-	    trial.numberBlack = _.shuffle(allBiased)[0]
+	    trial.numberFocalColor = _.shuffle(allBiased)[0]
 	} else if (quant === 'all' && bias === 'unbiased') { // all unbiased
-	    trial.numberBlack = _.shuffle(allUnbiased)[0]
+	    trial.numberFocalColor = _.shuffle(allUnbiased)[0]
 	}
 	
 	var shuffledShapes = _.shuffle(shapes)
-	trial.shape = shuffledShapes[0]
-	trial.secondaryShape = shuffledShapes[1]
+	trial.focalShape = shuffledShapes[0]
+	trial.otherShape = shuffledShapes[1]
 	
 	var shuffledColors = _.shuffle(colors)
-	trial.color = shuffledColors[0]
-	trial.secondaryColor = shuffledColors[1]
+	trial.focalColor = shuffledColors[0]
+	trial.otherColor = shuffledColors[1]
 
 	trial.side = _.shuffle(['left', 'right'])[0]
 	
-	trial.sentence = _.capitalize(trial.quant) + " of the " + trial.shape + " shapes are " + trial.color + " in this picture"
+	trial.sentence = _.capitalize(trial.quant) + " of the " + trial.focalShape + " shapes are " + trial.focalColor + " in this picture."
+	trial.QUD = "Which kinds of shapes are red or blue in this picture?"
 
 	return trial
 	
@@ -90,6 +96,12 @@ var initExp = function() {
 };
 
 var practice_trials = [
-    {sentence: "Some of the triangular shapes are white in this picture", quant: 'some', shape: 'triangular', color: 'white', numberBlack: '8, 4', 'side': 'right'},
-    {sentence: "All of the squared shapes are black in this picture", quant: 'all', shape: 'squared', color: 'black', numberBlack: '0, 8', 'side': 'right'}
+    {sentence: "Some of the triangular shapes are white in this picture.", quant: 'some',
+     focalShape: 'triangular', focalColor: 'red', otherColor: 'blue', otherShape: 'squared',
+     numberFocalColor: {focalColor_focalObject: 4, focalColor_otherObject: 8}, 'side': 'right',
+     QUD: "Which kinds of shapes are red or blue in this picture?"},
+    {sentence: "All of the squared shapes are black in this picture.", quant: 'all',
+     focalShape: 'squared', focalColor: 'blue', otherColor: 'red', otherShape: 'circular',
+     numberFocalColor: {focalColor_focalObject: 8, focalColor_otherObject: 0}, 'side': 'left',
+     QUD: "Which kinds of shapes are red or blue in this picture?"}
 ];
