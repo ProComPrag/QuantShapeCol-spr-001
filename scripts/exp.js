@@ -23,7 +23,7 @@ var initExp = function() {
     var allUnbiased = ['8, 0', '8, 0'];
 
     var shapes = ['circular', 'triangular', 'squared'];
-    var colors = ['black', 'white'];
+    var colors = ['black', 'white', 'red', 'blue', 'green'];
 
     var createTrialByLogicalType = function(quant, bias) {
 

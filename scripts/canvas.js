@@ -74,31 +74,38 @@ var createCanvas = function() {
 	// this is a public function
 	// it takes one argument - the number of black shapes and paints as many shapes in black as the number
 	// and returns an object
-	canvas.draw = function(blacksLeft, mainShape, blacksRight, secondShape, side) {
+    canvas.draw = function(focalLeft, mainShape, focalRight, secondShape, side, focalColor, otherColor) {
 		// these are declared in the beginning before drawing has begun so that 
 		// all the shapes are drawn on the same canvas
 		var canvas = document.getElementById("canvas");
 		var context = canvas.getContext("2d");
 
+	console.log(mainShape)
+	console.log(focalColor)
+	console.log(otherColor)
+	console.log(side)
+	console.log(focalLeft)
+	console.log(focalRight)
+	
 		// draws on the left
 		if (side === 'left') {
 			for (var i=0; i<16; i++) {
 				if (i < 8) {
 					drawShape(mainShape, i, context);
-					if (i < blacksLeft) {
-						context.fillStyle = "black";
+					if (i < focalLeft) {
+						context.fillStyle = focalColor;
 						context.fill();
 					} else {
-						context.fillStyle = "white";
+						context.fillStyle = otherColor;
 						context.fill();
 					}
 				} else {
 					drawShape(secondShape, i, context);
-					if (i < blacksRight + 8) {
-						context.fillStyle = "black";
+					if (i < focalLeft + 8) {
+						context.fillStyle = focalColor;
 						context.fill();
 					} else {
-						context.fillStyle = "white";
+						context.fillStyle = otherColor;
 						context.fill();
 					}
 				}
@@ -109,20 +116,20 @@ var createCanvas = function() {
 			for (var i=0; i<16; i++) {
 				if (i < 8) {
 					drawShape(secondShape, i, context);
-					if (i <  blacksLeft) {
-						context.fillStyle = "black";
+					if (i <  focalLeft) {
+						context.fillStyle = focalColor;
 						context.fill();
 					} else {
-						context.fillStyle = "white";
+						context.fillStyle = otherColor;
 						context.fill();
 					}
 				} else {
 					drawShape(mainShape, i, context);
-					if (i < blacksRight + 8) {
-						context.fillStyle = "black";
+					if (i < focalLeft + 8) {
+						context.fillStyle = focalColor;
 						context.fill();
 					} else {
-						context.fillStyle = "white";
+						context.fillStyle = otherColor;
 						context.fill();
 					}
 				}
