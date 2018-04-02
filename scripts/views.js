@@ -75,8 +75,9 @@ var initPracticeView = function(trialInfo) {
 	setTimeout(function() {
 	    // add a css class to the image to hide it
 	    $('.img').addClass('nodisplay');
-
 	    $('.help-text').removeClass('hidden');
+	    $('.sentence').removeClass('nodisplay');
+
 	    // attaches an event listener for key pressed
 	    // called handleKeyUp() when a key is pressed. (handleKeyUp() checks whether the key is space)
 	    $('body').on('keyup', handleKeyUp);
@@ -198,6 +199,8 @@ var initTrialView = function(trialInfo, CT) {
 	setTimeout(function() {
 	    // add a css class to the image to hide it
 	    $('.img').addClass('nodisplay');
+	    // shows the sentence (only the underlines)
+	    $('.sentence').removeClass('nodisplay');
 
 	    // attaches an event listener for key pressed
 	    // called handleKeyUp() when a key is pressed. (handleKeyUp() checks whether the key is space)
