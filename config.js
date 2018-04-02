@@ -25,7 +25,7 @@ var config = {
 		"underlineOneLine": false,
 		// blank screen before the image and sentence underline shows
 		// set to 0 if there shouldn't be a pause
-		"pause": 700
+		"pause": 500
 	},
 
 	// intro view

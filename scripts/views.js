@@ -42,10 +42,10 @@ var initPracticeView = function(trialInfo) {
     var canvas = createCanvas();
 
     $('#main').html(Mustache.render(view.template, {
-	title: config.practice.title,
-	QUD: trialInfo.QUD,
-	sentence: trialInfo.sentence.split(" "),
-	helpText: config.expSettings.helpText
+		title: config.practice.title,
+		QUD: trialInfo.QUD,
+		sentence: trialInfo.sentence.split(" "),
+		helpText: config.expSettings.helpText
     }));
 
     // creates one continuous underline below the sentence if it was set to true in config.js
@@ -77,7 +77,7 @@ var initPracticeView = function(trialInfo) {
     if (config.expSettings.hideImage === true) {
 	setTimeout(function() {
 	    // add a css class to the image to hide it
-	    $('.img').addClass('nodisplay');
+	    $('.stimulus').addClass('nodisplay');
 	    $('.help-text').removeClass('hidden');
 	    $('.sentence').removeClass('nodisplay');
 
@@ -89,8 +89,11 @@ var initPracticeView = function(trialInfo) {
     } else {
 	// attaches an event listener for key pressed
 	// called handleKeyUp() when a key is pressed. (handleKeyUp() checks whether the key is space)
-	$('.help-text').removeClass('hidden');
-	$('body').on('keyup', handleKeyUp);
+	setTimeout(function() {
+		$('.help-text').removeClass('hidden');
+		$('.sentence').removeClass('nodisplay');
+		$('body').on('keyup', handleKeyUp);
+	}, config.expSettings.pause + 1000);
     }
 
     // checks whether the key pressed is space and if so calls sentence.showNextWord()
@@ -205,7 +208,7 @@ var initTrialView = function(trialInfo, CT) {
     if (config.expSettings.hideImage === true) {
 	setTimeout(function() {
 	    // add a css class to the image to hide it
-	    $('.img').addClass('nodisplay');
+	    $('.stimulus').addClass('nodisplay');
 	    // shows the sentence (only the underlines)
 	    $('.sentence').removeClass('nodisplay');
 
@@ -218,8 +221,11 @@ var initTrialView = function(trialInfo, CT) {
     } else {
 	// attaches an event listener for key pressed
 	// called handleKeyUp() when a key is pressed. (handleKeyUp() checks whether the key is space)
-	$('.help-text').removeClass('hidden');
-	$('body').on('keyup', handleKeyUp);
+	setTimeout(function() {
+		$('.help-text').removeClass('hidden');
+		$('.sentence').removeClass('nodisplay');
+		$('body').on('keyup', handleKeyUp);
+	}, config.expSettings.pause + 1000);
     }
 
     // attaches an event listener to the yes / no radio inputs
