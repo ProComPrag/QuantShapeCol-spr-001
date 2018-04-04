@@ -1,8 +1,9 @@
 // creates Trial View
-var initTrialView = function(trialInfo, CT) {
+var initTrialView = function(CT) {
     var view = {};
     view.name = 'trial';
     view.template = $('#trial-view').html();
+    var trialInfo = exp.data.trials[CT];
 
     // initialises a canvas (code is canvas.js)
     var canvas = createCanvas();
@@ -16,10 +17,12 @@ var initTrialView = function(trialInfo, CT) {
     $('#main').html(Mustache.render(view.template, {
         currentTrial: CT + 1,
         QUD: trialInfo.QUD,
-        totalTrials: spr.data.trials.length,
+        totalTrials: exp.data.trials.length,
         sentence: trialInfo.sentence.split(" "),
         helpText: config_general.expSettings.helpText
     }));
+
+    canvas.draw(trialInfo);
 
     // creates one continuous underline below the sentence if it was set to true in config.js
     if (config_general.expSettings.underlineOneLine === true) {
@@ -30,20 +33,18 @@ var initTrialView = function(trialInfo, CT) {
         }
     }
 
-    canvas.draw(trialInfo);
-
     // hides the fixation point and shows the stimulus
     var showStimulus = function() {
         $('.stimulus').removeClass('nodisplay');
-        $('.pause-container').addClass('nodisplay');
+        $('.cross-container').addClass('nodisplay');
     };
 
     // shows the QUD for a second and then the fixation cross appears
     // calls showStimulus after a 'pause' amount of time
     setTimeout(function() {
-        $('.pause-container').removeClass('nodisplay');
-        setTimeout(showStimulus, config_general.expSettings.pause);
-    }, 1000);
+        $('.cross-container').removeClass('nodisplay');
+        setTimeout(showStimulus, config_general.expSettings.crossDuration);
+    }, config_general.expSettings.pause);
 
     // checks whether the key pressed is space and if so calls sentence.showNextWord()
     // handleKeyUp() is called when a key is pressed
@@ -75,18 +76,18 @@ var initTrialView = function(trialInfo, CT) {
     // checks the expSettings in config.js and depending on the settings
     // either show the image for a particular amount of time
     if (config_general.expSettings.hideImage === true) {
-    setTimeout(function() {
-        // add a css class to the image to hide it
-        $('.stimulus').addClass('nodisplay');
-        // shows the sentence (only the underlines)
-        $('.sentence').removeClass('nodisplay');
+        setTimeout(function() {
+            // add a css class to the image to hide it
+            $('.stimulus').addClass('nodisplay');
+            // shows the sentence (only the underlines)
+            $('.sentence').removeClass('nodisplay');
 
-        // attaches an event listener for key pressed
-        // called handleKeyUp() when a key is pressed. (handleKeyUp() checks whether the key is space)
-        $('.help-text').removeClass('hidden');
-        $('body').on('keyup', handleKeyUp);
-    }, config_general.expSettings.showDuration + config_general.expSettings.pause + 1000);
-    // or the image does not disappear at all
+            // attaches an event listener for key pressed
+            // called handleKeyUp() when a key is pressed. (handleKeyUp() checks whether the key is space)
+            $('.help-text').removeClass('hidden');
+            $('body').on('keyup', handleKeyUp);
+        }, config_general.expSettings.showDuration + config_general.expSettings.pause + config_general.expSettings.crossDuration);
+        // or the image does not disappear at all
     } else {
         // attaches an event listener for key pressed
         // called handleKeyUp() when a key is pressed. (handleKeyUp() checks whether the key is space)
@@ -94,7 +95,7 @@ var initTrialView = function(trialInfo, CT) {
             $('.help-text').removeClass('hidden');
             $('.sentence').removeClass('nodisplay');
             $('body').on('keyup', handleKeyUp);
-        }, config_general.expSettings.pause + 1000);
+        }, config_general.expSettings.pause + config_general.expSettings.crossDuration);
     }
 
     // attaches an event listener to the yes / no radio inputs
@@ -102,13 +103,24 @@ var initTrialView = function(trialInfo, CT) {
     // as well as a readingTimes property with value - a list containing the reading times of each word
     $('input[name=question]').on('change', function() {
         $('body').off('keyup', handleKeyUp);
-        spr.data.trials[CT].time_spent = Date.now() - startingTime - config_general.expSettings.pause - 1000;
-        spr.data.trials[CT].trial_number = CT+1;
-        spr.data.trials[CT].response = $('input[name=question]:checked').val();
-        spr.data.trials[CT].reading_times = getDeltas();
-        console.log(spr.data.trials[CT]);
+        var trialData = {};
+
+        for (var prop in trialInfo) {
+            if (trialInfo.hasOwnProperty(prop)) {
+                trialData[prop] = trialInfo[prop];
+            }
+        }
+
+        trialData.time_spent = Date.now() - startingTime;
+        trialData.trial_number = CT + 1;
+        trialData.response = $('input[name=question]:checked').val();
+        trialData.reading_times = getDeltas();
+
+        exp.data.out.push(trialData);
+
+        console.log(exp.data.out);
         setTimeout(function() {
-            spr.findNextView();
+            exp.findNextView();
         }, 200);
     });
 

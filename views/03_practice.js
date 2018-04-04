@@ -1,9 +1,10 @@
 // creates Practice view
-var initPracticeView = function(trialInfo) {
+var initPracticeView = function(CT) {
     var view = {};
     view.name = 'practice',
     view.template = $('#practice-view').html();
     var sentence = initSentence();
+    var trialInfo = exp.data.practice_trials[CT];
     // initialises a canvas (code is canvas.js)
     var canvas = createCanvas();
 
@@ -14,6 +15,9 @@ var initPracticeView = function(trialInfo) {
         helpText: config_general.expSettings.helpText
     }));
 
+    // draws the picture on the canvas
+    canvas.draw(trialInfo);
+
     // creates one continuous underline below the sentence if it was set to true in config/config_general.js
     if (config_general.expSettings.underlineOneLine === true) {
         var words = $(".word");
@@ -23,20 +27,18 @@ var initPracticeView = function(trialInfo) {
         }
     }
 
-    canvas.draw(trialInfo);
-
     // hides the fixation point and shows the stimulus
     var showStimulus = function() {
         $('.stimulus').removeClass('nodisplay');
-        $('.pause-container').addClass('nodisplay');
+        $('.cross-container').addClass('nodisplay');
     };
 
     // shows the QUD for a second and then the fixation cross appears
     // calls showStimulus after a 'pause' amount of time
     setTimeout(function() {
-        $('.pause-container').removeClass('nodisplay');
-        setTimeout(showStimulus, config_general.expSettings.pause);     
-    }, 1000);
+        $('.cross-container').removeClass('nodisplay');
+        setTimeout(showStimulus, config_general.expSettings.crossDuration);     
+    }, config_general.expSettings.pause);
 
     // checks the expSettings in config/config_general.js and depending on the settings
     // either show the image for a particular amount of time
@@ -50,7 +52,7 @@ var initPracticeView = function(trialInfo) {
             // attaches an event listener for key pressed
             // called handleKeyUp() when a key is pressed. (handleKeyUp() checks whether the key is space)
             $('body').on('keyup', handleKeyUp);
-        }, config_general.expSettings.showDuration + config_general.expSettings.pause + 1000);
+        }, config_general.expSettings.showDuration + config_general.expSettings.pause + config_general.expSettings.crossDuration);
     // or the image does not disappear at all
     } else {
         // attaches an event listener for key pressed
@@ -59,7 +61,7 @@ var initPracticeView = function(trialInfo) {
             $('.help-text').removeClass('hidden');
             $('.sentence').removeClass('nodisplay');
             $('body').on('keyup', handleKeyUp);
-        }, config_general.expSettings.pause + 1000);
+        }, config_general.expSettings.pause + config_general.expSettings.crossDuration);
     }
 
     // checks whether the key pressed is space and if so calls sentence.showNextWord()
@@ -73,7 +75,7 @@ var initPracticeView = function(trialInfo) {
 
     $('input[name=question]').on('change', function() {
         $('body').off('keyup', handleKeyUp);
-        spr.findNextView();
+        exp.findNextView();
     });
 
     return view;

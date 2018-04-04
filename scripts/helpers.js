@@ -1,30 +1,30 @@
 // HELPERS:
 // functions shared between more than two views or long functions
 
-// attaches spr.findNextView() function to all the buttons that bring
+// attaches exp.findNextView() function to all the buttons that bring
 // the next view when clicked. Which view should be shown is determined by 
-// the conditionals in spr.findNextView() which is located in main.js
+// the conditionals in exp.findNextView() which is located in main.js
 // if the button has id='send-data' (the button in subj info template has it),
-// the data is collected sent before spr.findNextView(); is called
+// the data is collected sent before exp.findNextView(); is called
 var showNextView = function() {
     var nexts = $('.next-view');
     
     for (var i=0; i<nexts.length; i++){
         if (nexts[i].id === 'sends-data') {
             nexts[i].addEventListener('click', function() {
-            for (var i=0; i<spr.data.trials.length; i++) {
-                spr.data.trials[i].age = $('#age').val(),
-                spr.data.trials[i].gender = $('#gender').val(),
-                spr.data.trials[i].education = $('#education').val(),
-                spr.data.trials[i].languages = $('#languages').val(),
-                spr.data.trials[i].comments = $('#comments').val().trim()
+            for (var i=0; i<exp.data.trials.length; i++) {
+                exp.data.trials[i].age = $('#age').val(),
+                exp.data.trials[i].gender = $('#gender').val(),
+                exp.data.trials[i].education = $('#education').val(),
+                exp.data.trials[i].languages = $('#languages').val(),
+                exp.data.trials[i].comments = $('#comments').val().trim()
             }
 
-            spr.findNextView();
+            exp.findNextView();
             });
         } else {
             nexts[i].addEventListener('click', function() {
-            spr.findNextView();
+            exp.findNextView();
             });
         }
     }

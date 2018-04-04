@@ -1,5 +1,5 @@
 // creates Subject Info View
-var initSubjInfoView = function() {
+var initPostTestView = function() {
     var view = {};
     view.name = 'subjInfo';
     view.template = $('#subj-info-view').html();

@@ -12,7 +12,7 @@ var initThanksView = function() {
         assignmentId: HITData['assignmentId'],
         author: config_deploy.author,
         experiment_id: config_deploy.experiment_id,
-        trials: JSON.stringify(spr.data.trials),
+        trials: JSON.stringify(exp.data.out),
         description: config_deploy.description,
         worker_id: HITData['workerId']
     }));
@@ -20,7 +20,7 @@ var initThanksView = function() {
     var data = {
         'author': config_deploy.author,
         'experiment_id': config_deploy.experiment_id,
-        'trials': spr.data.trials,
+        'trials': exp.data.out,
         'description': config_deploy.description,
         'worker_id': HITData['workerId'],
         // MTurk expects a key 'assignmentId' for the submission to work, that is why is it not consistent with the snake case that the other keys have
