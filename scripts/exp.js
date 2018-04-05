@@ -86,11 +86,11 @@ var initExp = function() {
     };
 
 	var practice_trials = [
-	    {sentence: "Some of the triangles in this picture are white in color.", quant: 'some',
+	    {sentence: "Some of the triangles in this picture are red in color.", quant: 'some',
 	     focalShape: 'triangle', focalColor: 'red', otherColor: 'blue', otherShape: 'square',
 	     numberFocalColor: {focalColor_focalObject: 4, focalColor_otherObject: 8}, 'side': 'right',
 	     QUD: "Which kinds of shapes in this picture are red or blue in color?"},
-	    {sentence: "All of the squares in this picture are black in color.", quant: 'all',
+	    {sentence: "All of the squares in this picture are blue in color.", quant: 'all',
 	     focalShape: 'square', focalColor: 'blue', otherColor: 'red', otherShape: 'circle',
 	     numberFocalColor: {focalColor_focalObject: 8, focalColor_otherObject: 0}, 'side': 'left',
 	     QUD: "Which kinds of shapes in this picture are red or blue in color?"}
