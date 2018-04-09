@@ -9,23 +9,29 @@ var initExp = function() {
     var numberSomeUnbiased = 6
     var numberAllBiased = 6
     var numberAllUnbiased = 6
-    var totalLogicalConditions = numberSomeBiased + numberSomeUnbiased + numberAllBiased + numberAllUnbiased
+    var numberAllFalse = 6
+    var totalLogicalConditions = numberSomeBiased + numberSomeUnbiased + numberAllBiased + numberAllUnbiased + numberAllFalse
     
     var logicalConditions = new Array(totalLogicalConditions)
     logicalConditions.fill("some,biased", 0, numberSomeBiased)
     logicalConditions.fill("some,unbiased", numberSomeBiased, numberSomeBiased + numberSomeUnbiased)
-    logicalConditions.fill("some,biased", numberSomeBiased + numberSomeBiased, numberSomeBiased + numberSomeBiased + numberAllBiased)
-    logicalConditions.fill("all,unbiased", numberSomeBiased + numberSomeBiased + numberAllBiased, totalLogicalConditions)
+    logicalConditions.fill("some,biased", numberSomeBiased + numberSomeUnbiased, numberSomeBiased + numberSomeUnbiased + numberAllBiased)
+    logicalConditions.fill("all,unbiased", numberSomeBiased + numberSomeUnbiased + numberAllBiased, numberSomeBiased + numberSomeUnbiased + numberAllBiased + numberAllFalse)
+    logicalConditions.fill("all,false", numberSomeBiased + numberSomeUnbiased + numberAllBiased + numberAllFalse, totalLogicalConditions)
+    console.log(logicalConditions)
+    // insert someFalse
     
-    var someBiased = ['4, 0']; // there are other possibilities
-    var someUnbiased = ['4, 4'];
-    var allBiased = ['8, 4'];
-    var allUnbiased = ['8, 0'];
+    // var someBiased = ['4, 0']; // there are other possibilities
+    // var someUnbiased = ['4, 4'];
+    // var allBiased = ['8, 4'];
+    // var allUnbiased = ['8, 0'];
 
     var someBiased = [{focalColor_focalObject: 4, focalColor_otherObject: 0}] // there are other possibilities
     var someUnbiased = [{focalColor_focalObject: 4, focalColor_otherObject: 4}]
     var allBiased = [{focalColor_focalObject: 8, focalColor_otherObject: 4}]
     var allUnbiased = [{focalColor_focalObject: 8, focalColor_otherObject: 0}]
+    var allFalse = [{focalColor_focalObject: 4, focalColor_otherObject: 4}]
+    // insert someFalse
     
     var shapes = ['circle', 'triangle', 'square'];
     var colors = ['red', 'blue'];
@@ -33,7 +39,7 @@ var initExp = function() {
     var createTrialByLogicalType = function(quant, bias) {
 
 	// A logical type is defined by the pair 'quant' ('some' or 'all')
-	// and 'bias' ('biased' or 'unbiased').
+	// and 'bias' ('biased' or 'unbiased' or 'false').
 	// This function creates and returns a random instance of each
 	// logical type.
 	// The only crucial information is the number of elements of focal color
@@ -50,7 +56,11 @@ var initExp = function() {
 	    trial.numberFocalColor = _.shuffle(allBiased)[0]
 	} else if (quant === 'all' && bias === 'unbiased') { // all unbiased
 	    trial.numberFocalColor = _.shuffle(allUnbiased)[0]
-	}
+	} else if (quant === 'all' && bias === 'false') { // all false
+	    trial.numberFocalColor = _.shuffle(allFalse)[0]
+	} else if (quant === 'some' && bias === 'false') { // some false
+	    trial.numberFocalColor = _.shuffle(allFalse)[0]
+	} 
 	
 	var shuffledShapes = _.shuffle(shapes)
 	trial.focalShape = shuffledShapes[0]
@@ -61,8 +71,13 @@ var initExp = function() {
 	trial.otherColor = shuffledColors[1]
 
 	trial.side = _.shuffle(['left', 'right'])[0]
+
+	if (quant === 'some' && bias === 'false') { 
+	    	trial.sentence = _.capitalize(trial.quant) + " of the " + trial.focalShape + "s in this picture are white in color."
+	} else {
+	    trial.sentence = _.capitalize(trial.quant) + " of the " + trial.focalShape + "s in this picture are " + trial.focalColor + " in color."
+	}
 	
-	trial.sentence = _.capitalize(trial.quant) + " of the " + trial.focalShape + "s in this picture are " + trial.focalColor + " in color."
 	trial.QUD = "Which kinds of shapes in this pictures are red or blue in color?"
 
 	return trial
