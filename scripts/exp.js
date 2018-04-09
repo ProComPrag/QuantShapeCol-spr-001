@@ -19,7 +19,7 @@ var initExp = function() {
     logicalConditions.fill("all,unbiased", numberSomeBiased + numberSomeUnbiased + numberAllBiased, numberSomeBiased + numberSomeUnbiased + numberAllBiased + numberAllFalse)
     logicalConditions.fill("all,false", numberSomeBiased + numberSomeUnbiased + numberAllBiased + numberAllFalse, totalLogicalConditions)
     console.log(logicalConditions)
-    // insert someFalse
+    // insert someFalse VINI
     
     // var someBiased = ['4, 0']; // there are other possibilities
     // var someUnbiased = ['4, 4'];
@@ -31,7 +31,7 @@ var initExp = function() {
     var allBiased = [{focalColor_focalObject: 8, focalColor_otherObject: 4}]
     var allUnbiased = [{focalColor_focalObject: 8, focalColor_otherObject: 0}]
     var allFalse = [{focalColor_focalObject: 4, focalColor_otherObject: 4}]
-    // insert someFalse
+    // insert someFalse VINI
     
     var shapes = ['circle', 'triangle', 'square'];
     var colors = ['red', 'blue'];
