@@ -11,20 +11,22 @@ var showNextView = function() {
     
     for (var i=0; i<nexts.length; i++){
         if (nexts[i].id === 'sends-data') {
-            nexts[i].addEventListener('click', function() {
-            for (var i=0; i<exp.data.trials.length; i++) {
-                exp.data.out.age = $('#age').val(),
-                exp.data.out.gender = $('#gender').val(),
-                exp.data.out.education = $('#education').val(),
-                exp.data.out.languages = $('#languages').val(),
-                exp.data.out.comments = $('#comments').val().trim()
-            }
+            nexts[i].addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                for (var i=0; i<exp.data.trials.length; i++) {
+                    exp.data.out.age = $('#age').val(),
+                    exp.data.out.gender = $('#gender').val(),
+                    exp.data.out.education = $('#education').val(),
+                    exp.data.out.languages = $('#languages').val(),
+                    exp.data.out.comments = $('#comments').val().trim()
+                }
 
-            exp.findNextView();
+                exp.findNextView();
             });
         } else {
             nexts[i].addEventListener('click', function() {
-            exp.findNextView();
+                exp.findNextView();
             });
         }
     }
