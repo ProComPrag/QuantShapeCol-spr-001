@@ -10,16 +10,17 @@ var initExp = function() {
     var numberAllBiased = 6
     var numberAllUnbiased = 6
     var numberAllFalse = 6
-    var totalLogicalConditions = numberSomeBiased + numberSomeUnbiased + numberAllBiased + numberAllUnbiased + numberAllFalse
+    var numberSomeFalse = 6
+    var totalLogicalConditions = numberSomeBiased + numberSomeUnbiased + numberAllBiased + numberAllUnbiased + numberAllFalse + numberSomeFalse
     
     var logicalConditions = new Array(totalLogicalConditions)
     logicalConditions.fill("some,biased", 0, numberSomeBiased)
     logicalConditions.fill("some,unbiased", numberSomeBiased, numberSomeBiased + numberSomeUnbiased)
     logicalConditions.fill("some,biased", numberSomeBiased + numberSomeUnbiased, numberSomeBiased + numberSomeUnbiased + numberAllBiased)
     logicalConditions.fill("all,unbiased", numberSomeBiased + numberSomeUnbiased + numberAllBiased, numberSomeBiased + numberSomeUnbiased + numberAllBiased + numberAllFalse)
-    logicalConditions.fill("all,false", numberSomeBiased + numberSomeUnbiased + numberAllBiased + numberAllFalse, totalLogicalConditions)
+    logicalConditions.fill("all,false", numberSomeBiased + numberSomeUnbiased + numberAllBiased + numberAllFalse, numberSomeBiased + numberSomeUnbiased + numberAllBiased + numberAllFalse + numberSomeFalse)
+    logicalConditions.fill("some,false", numberSomeBiased + numberSomeUnbiased + numberAllBiased + numberAllFalse + numberSomeFalse, totalLogicalConditions)
     console.log(logicalConditions)
-    // insert someFalse VINI
     
     // var someBiased = ['4, 0']; // there are other possibilities
     // var someUnbiased = ['4, 4'];
@@ -31,7 +32,7 @@ var initExp = function() {
     var allBiased = [{focalColor_focalObject: 8, focalColor_otherObject: 4}]
     var allUnbiased = [{focalColor_focalObject: 8, focalColor_otherObject: 0}]
     var allFalse = [{focalColor_focalObject: 4, focalColor_otherObject: 4}]
-    // insert someFalse VINI
+    var someFalse = [{focalColor_focalObject: 4, focalColor_otherObject: 4}]
     
     var shapes = ['circle', 'triangle', 'square'];
     var colors = ['red', 'blue'];
