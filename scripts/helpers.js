@@ -1,37 +1,6 @@
 // HELPERS:
 // functions shared between more than two views or long functions
 
-// attaches exp.findNextView() function to all the buttons that bring
-// the next view when clicked. Which view should be shown is determined by 
-// the conditionals in exp.findNextView() which is located in main.js
-// if the button has id='send-data' (the button in subj info template has it),
-// the data is collected sent before exp.findNextView(); is called
-var showNextView = function() {
-    var nexts = $('.next-view');
-    
-    for (var i=0; i<nexts.length; i++){
-        if (nexts[i].id === 'sends-data') {
-            nexts[i].addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                for (var i=0; i<exp.data.trials.length; i++) {
-                    exp.data.out.age = $('#age').val(),
-                    exp.data.out.gender = $('#gender').val(),
-                    exp.data.out.education = $('#education').val(),
-                    exp.data.out.languages = $('#languages').val(),
-                    exp.data.out.comments = $('#comments').val().trim()
-                }
-
-                exp.findNextView();
-            });
-        } else {
-            nexts[i].addEventListener('click', function() {
-                exp.findNextView();
-            });
-        }
-    }
-};
-
 // creates a sentence object that has showNextWord() function
 var initSentence = function() {
     var sentence = {};

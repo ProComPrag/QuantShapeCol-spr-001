@@ -64,10 +64,10 @@
             </section>
             {{/ text }}
             {{# button }}
-            <button class="btn next-view">{{ button }}</button>
+            <button id="next">{{ button }}</button>
             {{/ button }}
             {{^ button }}
-            <button class="btn next-view">Begin Experiment</button>
+            <button id="next">Begin Experiment</button>
             {{/ button }}
         </div>
         </script>
@@ -84,10 +84,10 @@
             </section>
             {{/ text }}
             {{# button }}
-            <button class="btn next-view">{{ button }}</button>
+            <button id="next">{{ button }}</button>
             {{/ button }}
             {{^ button }}
-            <button class="btn next-view">To Practice Trial</button>
+            <button id="next">To Practice Trial</button>
             {{/ button }}
         </view>
         </script>
@@ -133,7 +133,7 @@
                 <p class="text">{{ text }}</p>
             </section>
             {{/ text }}
-            <button class="btn next-view">Begin Experiment</button>
+            <button id="next">Begin Experiment</button>
         </div>
         </script>
 
@@ -215,10 +215,10 @@
 					rows="6" cols="40"></textarea>
 				</p>
 				{{# buttonText }}
-				<button id="sends-data" class="btn next-view sends-data">{{ buttonText }}</button>
+				<button id="next">{{ buttonText }}</button>
 				{{/ buttonText }}
 				{{^ buttonText }}
-				<button id="sends-data" class="btn next-view sends-data">Next</button>
+				<button id="next">Next</button>
 				{{/ buttonText }}
 			</form>
 		</div>

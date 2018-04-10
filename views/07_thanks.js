@@ -4,12 +4,12 @@ var initThanksView = function() {
     view.name = 'thanks';
     view.template = $('#thanks-view').html();
 
-	// make sure that "numberFocalColor" is not an object but an array with
-	// just the relevant numbers
-	for (i = 0 ; i < exp.data.out.length; i++) {
-		exp.data.out[i].numberFocalColor = _.values(exp.data.out[i].numberFocalColor)
-	}
-	
+    // make sure that "numberFocalColor" is not an object but an array with
+    // just the relevant numbers
+    for (i = 0 ; i < exp.data.out.length; i++) {
+        exp.data.out[i].numberFocalColor = _.values(exp.data.out[i].numberFocalColor)
+    }
+    
     // needed for private server
     var data = {
         author: config_deploy.author,
@@ -18,7 +18,7 @@ var initThanksView = function() {
         description: config_deploy.description,
         startDateTime: exp.data.startDate,
         totalExpTimeMinutes: (Date.now() - exp.data.startTime) / 60000,
-		age: exp.data.out.age,
+        age: exp.data.out.age,
         gender: exp.data.out.gender,
         languages: exp.data.out.languages,
         comments: exp.data.out.comments,
@@ -58,9 +58,9 @@ var initThanksView = function() {
 
         data['participant_id'] = exp.data.out.participant_id;
     } else if (config_deploy.deployMethod === 'directLink'){
-    	$('main').html(Mustache.render(view.template, {
-    		thanksMessage: config_views.thanks.message
-    	}));
+        $('main').html(Mustache.render(view.template, {
+            thanksMessage: config_views.thanks.message
+        }));
 
         data['participant_id'] = exp.data.out.participant_id;
     } else if (config_deploy.deployMethod === 'debug') {
