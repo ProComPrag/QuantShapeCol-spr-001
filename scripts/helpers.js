@@ -13,11 +13,11 @@ var showNextView = function() {
         if (nexts[i].id === 'sends-data') {
             nexts[i].addEventListener('click', function() {
             for (var i=0; i<exp.data.trials.length; i++) {
-                exp.data.trials[i].age = $('#age').val(),
-                exp.data.trials[i].gender = $('#gender').val(),
-                exp.data.trials[i].education = $('#education').val(),
-                exp.data.trials[i].languages = $('#languages').val(),
-                exp.data.trials[i].comments = $('#comments').val().trim()
+                exp.data.out.age = $('#age').val(),
+                exp.data.out.gender = $('#gender').val(),
+                exp.data.out.education = $('#education').val(),
+                exp.data.out.languages = $('#languages').val(),
+                exp.data.out.comments = $('#comments').val().trim()
             }
 
             exp.findNextView();
