@@ -9,19 +9,27 @@ body {
 /*
 	styles that apply to all views
 */
+
+/* the container where the views are plugged */
+main {
+	margin: 50px auto;
+	max-width: 960px;
+	min-height: 100%;
+}
+
+/* titles */
 h1, h2 {
 	color: #111;
 	color: rgba(0, 0, 0, 0.87);
 	font-family: "Playfair Display", "Noto Serif", sans-serif;
-	font-weight: 700;
-	font-size: 2em;
+	font-size: 34px;
 	text-align: center;
 }
 
 h3 {
 	color: #333;
 	font-family: "Noto Sans", sans-serif;
-	font-size: 1.3em;
+	font-size: 20px;
 	text-align: center;
 	margin: 50px 0 40px 0;
 }
@@ -36,7 +44,7 @@ h4 {
 
 a, p, li, span, button {
 	color: #333;
-	font-family: "Noto Sans", sans-serif;
+	font-family: "Lato", "Noto Sans", sans-serif;
 }
 
 /* text */
@@ -48,14 +56,9 @@ p {
 	margin: 0 auto;
 }
 
-#main {
-	min-height: 100%;
-}
-
 .view {
 	margin: 0 auto;
 	max-width: 740px;
-	padding: 30px 0;
 }
 
 button {
@@ -84,10 +87,6 @@ button:focus {
 .text-container {
 	box-sizing: border-box;
 	padding: 20px;
-}
-
-.text {
-	font-size: 1em;
 }
 
 
@@ -133,9 +132,6 @@ button:focus {
 	height: 160px;
 	margin: 30px auto;
 	width: 500px;
-}
-
-.img {
 }
 
 .help-text {
@@ -184,9 +180,9 @@ input[name=question] {
 }
 
 .answer {
-	border: 2px solid #535AAC;
+	border: 2px solid #5187BA;
 	border-radius: 3px;
-	color: #535AAC;
+	color: #5187BA;
 	font-weight: bold;
 	margin: 10px;
 	padding: 3px 6px;
@@ -194,7 +190,8 @@ input[name=question] {
 
 .answer:hover,
 .answer:focus {
-	background: #535AAC;
+	border: 2px solid #324D93;
+	background-color: #324D93;
 	color: white;
 }
 
