@@ -118,7 +118,6 @@ var initExp = function() {
     	cond.split(",")[1])})
     data.practice_trials = practice_trials;
     data.out = [];
-    
     console.log(data.trials);
 
     return data;

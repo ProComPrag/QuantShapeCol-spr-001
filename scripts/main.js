@@ -34,6 +34,9 @@ exp.findNextView = function() {
 // creates and sets variables when the page is loaded.
 exp.init = function() {
 	this.data = initExp();
+	this.data.startDate = Date();
+	this.data.startTime = Date.now();
+	this.data.userAgent = window.navigator.userAgent;
 	
 	// initialize counters and generate first view
 	this.currentViewCounter = 0;
