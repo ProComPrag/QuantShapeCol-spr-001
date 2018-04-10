@@ -171,58 +171,60 @@
         </div>  
         </script>
 
-        <!-- subject info view -->
+	    <!-- subject info view -->
         <script id="subj-info-view" type="x-tmpl-mustache">
         <div class="view subj-info-templ">
-            {{# title }}
-            <h2>{{ title }}</h2>
-            {{/ title }}
-            {{# text }}
-            <section class="text-container">
-                <p class="text">{{ text }}</p>
-            </section>
-            {{/ text }}
-            <form>
-                <p>
-                    <label for="age">Age:</label>
-                    <input type="number" name="age" min="18" max="110" id="age" />
-                </p>
-                <p>
-                    <label for="gender">Gender:</label>
-                    <select id="gender" name="gender">
-                        <option></option>
-                        <option value="male">male</option>
-                        <option value="female">female</option>
-                        <option value="other">other</option>
-                    </select>
-                </p>
-                <p>
-                    <label for="education">Level of Education:</label>
-                    <select id="education" name="education">
-                        <option></option>
-                        <option value="graduated_high_school">Graduated High School</option>
-                        <option value="graduated_college">Graduated College</option>
-                        <option value="higher_degree">Higher Degree</option>
-                    </select>
-                </p>
-                <p>
-                    <label for="languages" name="languages">Native Languages: <br /><span>(i.e. the language(s) spoken at home when you were a child)</</span></label>
-                    <input type="text" id="languages"/>
-                </p>
-                <p class="comment-sect">
-                    <label for="comments">Further comments</label>
-                    <textarea name="comments" id="comments"
-                    rows="6" cols="40"></textarea>
-                </p>
-                {{# buttonText }}
-                <button id="sends-data" class="btn next-view sends-data">{{ buttonText }}</button>
-                {{/ buttonText }}
-                {{^ buttonText }}
-                <button id="sends-data" class="btn next-view sends-data">Next</button>
-                {{/ buttonText }}
-            </form>
-        </div>
-        </script>
+			{{# title }}
+			<h2>{{ title }}</h2>
+			{{/ title }}
+			{{# text }}
+			<section class="text-container">
+				<p class="text">{{ text }}</p>
+			</section>
+			{{/ text }}
+			<form>
+				<p>
+					<label for="age">Age:</label>
+					<input type="number" name="age" min="18" max="110" id="age" />
+				</p>
+				<p>
+					<label for="gender">Gender:</label>
+					<select id="gender" name="gender">
+						<option></option>
+						<option value="male">male</option>
+						<option value="female">female</option>
+						<option value="other">other</option>
+					</select>
+				</p>
+				<p>
+					<label for="education">Level of Education:</label>
+					<select id="education" name="education">
+						<option></option>
+						<option value="graduated_high_school">Graduated High School</option>
+						<option value="graduated_college">Graduated College</option>
+						<option value="higher_degree">Higher Degree</option>
+					</select>
+				</p>
+				<p>
+					<label for="languages" name="languages">Native Languages: <br /><span>(i.e. the language(s) spoken at home when you were a child)</</span></label>
+					<input type="text" id="languages"/>
+				</p>
+				<p class="comment-sect">
+					<label for="comments">Further comments</label>
+					<textarea name="comments" id="comments"
+					rows="6" cols="40"></textarea>
+				</p>
+				{{# buttonText }}
+				<button id="sends-data" class="btn next-view sends-data">{{ buttonText }}</button>
+				{{/ buttonText }}
+				{{^ buttonText }}
+				<button id="sends-data" class="btn next-view sends-data">Next</button>
+				{{/ buttonText }}
+			</form>
+		</div>
+		</script>
+		
+
 
 	<!-- Thanks View -->
 	<script id="thanks-view" type="x-tmpl-mustache">

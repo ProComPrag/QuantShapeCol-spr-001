@@ -5,7 +5,7 @@ var config_deploy = {
     "experiment_id": "QSCdebug2", // needed to recover data from server app
 	"author": "RandomJane",  // needed to recover data from server app
     "description": "A minimal template for a browser-based experiment which can be deployed in several ways",
-	"deployMethod" : "directLink", // set deployment method; use one of 'debug', 'localServer', 'MTurk', 'MTurkSandbox', 'Prolific', 'directLink'
+	"deployMethod" : "debug", // set deployment method; use one of 'debug', 'localServer', 'MTurk', 'MTurkSandbox', 'Prolific', 'directLink'
 	
 	// optional fields
 	"contact_email": "exprag@gmail.com", // who to contact in case of trouble
