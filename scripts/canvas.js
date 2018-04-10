@@ -80,7 +80,22 @@ var createCanvas = function() {
 	var canvas = document.getElementById("canvas");
 	var context = canvas.getContext("2d");
 
-	console.log(trialInfo)
+	console.log(trialInfo);
+
+    // focal color, other color
+    var fc, oc;
+
+    // red: #F92A3B
+    // blue: #2F93C3
+    if (trialInfo.focalColor === 'blue') {
+        fc = '#2F93C3';
+        oc = '#F92A3B';
+    } else if (trialInfo.focalColor === 'red') {
+        fc = '#F92A3B';
+        oc = '#2F93C3';
+    } else {
+        console.log('No such trialInfo.focalColor');
+    }
 	
 	// draws on the left
 	if (trialInfo.side === 'left') {
@@ -88,19 +103,19 @@ var createCanvas = function() {
 		if (i < 8) {
 		    drawShape(trialInfo.focalShape, i, context);
 		    if (i < trialInfo.numberFocalColor.focalColor_focalObject) {
-			context.fillStyle = trialInfo.focalColor;
+			context.fillStyle = fc;
 			context.fill();
 		    } else {
-			context.fillStyle = trialInfo.otherColor;
+			context.fillStyle = oc;
 			context.fill();
 		    }
 		} else {
 		    drawShape(trialInfo.otherShape, i, context);
 		    if (i < trialInfo.numberFocalColor.focalColor_otherObject + 8) {
-			context.fillStyle = trialInfo.focalColor;
+			context.fillStyle = fc;
 			context.fill();
 		    } else {
-			context.fillStyle = trialInfo.otherColor;
+			context.fillStyle = oc;
 			context.fill();
 		    }
 		}
@@ -112,19 +127,19 @@ var createCanvas = function() {
 		if (i < 8) {
 		    drawShape(trialInfo.otherShape, i, context);
 		    if (i <  trialInfo.numberFocalColor.focalColor_otherObject) {
-			context.fillStyle = trialInfo.focalColor;
+			context.fillStyle = fc;
 			context.fill();
 		    } else {
-			context.fillStyle = trialInfo.otherColor;
+			context.fillStyle = oc;
 			context.fill();
 		    }
 		} else {
 		    drawShape(trialInfo.focalShape, i, context);
 		    if (i < trialInfo.numberFocalColor.focalColor_focalObject + 8) {
-			context.fillStyle = trialInfo.focalColor;
+			context.fillStyle = fc;
 			context.fill();
 		    } else {
-			context.fillStyle = trialInfo.otherColor;
+			context.fillStyle = oc;
 			context.fill();
 		    }
 		}
